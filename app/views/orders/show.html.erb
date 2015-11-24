@@ -1,3 +1,11 @@
-<h2>Your basket</h2>
-<%= render 'items', :order => current_order %>
-<p><%= link_to 'Empty basket', basket_path, :method => :delete %></p>
+<div class="row">
+    <div class="col-lg-12">
+        <h2 class="page-header">Your basket</h2>
+    </div>
+    <div class="col-lg-12">
+        <%= render 'items', :order => current_order %>
+    </div>
+    <div class="col-lg-12 text-center">
+        <button type="button" class="btn btn-lg btn-danger "><%= link_to 'Empty basket', basket_path, :method => :delete, style:"color:#FFF" %></button>
+    </div>
+</div>

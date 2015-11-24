@@ -1,21 +1,32 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Workspace</title>
+  <title>M-Shop</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
-<% if current_order %>
-<p style="border:1px solid black;padding:10px;">
-  You have <%= pluralize current_order.total_items, 'item'%> in your basket which cost
-  <%= number_to_currency current_order.total_before_tax %>.
-</p>
-<% end %>
-<%= link_to "View basket", basket_path %>
-<%= flash[:notice] %>
-<%= yield %>
-
+<div class="container">
+  <br/>
+  <div class="row">
+    <div class="col-sm-4">
+      <%= image_tag("logo.jpg", width: "200") %>
+    </div>
+    <div class="col-sm-8">
+      <h1 style="font-size:80px"><span class="label label-success">A.S. Store</span></h1>
+    </div>
+  </div>
+  <br/>
+  <% if current_order %>
+  <div class="well">
+    You have <%= pluralize current_order.total_items, 'item'%> in your basket which cost
+    <%= number_to_currency current_order.total_before_tax %>.
+    <button type="button" class="btn btn-info"><%= link_to "View basket", basket_path, style:"color:#FFF" %></button>
+  </div>
+  <% end %>
+  <%= flash[:notice] %>
+  <%= yield %>
+</div>
 </body>
 </html>

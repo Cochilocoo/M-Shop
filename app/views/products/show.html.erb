@@ -1,17 +1,32 @@
-<h2><%= @product.name %></h2>
-
-<% if @product.default_image %>
-  <%= image_tag @product.default_image.path, :width => '200px', :style => "float:right" %>
-<% end %>
-
-<p><%= @product.short_description %></p>
-<p>
-  <b><%= number_to_currency @product.price %></b>
-  <%= link_to "Add to basket", product_path(@product.permalink), :method => :post %>
-</p>
-
-<hr>
-<%= simple_format @product.description %>
-<hr>
-
-<p><%= link_to "Back to list", root_path %></p>
+<div class="row">
+    <div class="col-lg-12">
+        <h2 class="page-header"><%= @product.name %></h2>
+    </div>
+    
+    <div class="col-sm-12">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h3 class="panel-title"><%= @product.short_description %></h3>
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <p>
+                          <b><%= number_to_currency @product.price %></b>
+                          <button type="button" class="btn btn-sm btn-warning"><%= link_to "Add to basket", product_path(@product.permalink), :method => :post, style:"color:#FFF" %></button>
+                        </p>
+                        <hr>
+                        <%= simple_format @product.description %>
+                        <hr>
+                    </div>
+                    <div class="col-sm-6">
+                        <% if @product.default_image %>
+                            <%= image_tag @product.default_image.path, :width => '100px', :style => "float:right" %>
+                        <% end %>
+                    </div>
+            </div>
+        </div>
+    </div>
+</div>
+<br/>
+<button type="button" class="btn btn-primary"><%= link_to "Back to list", root_path, style:"color:#FFF" %></button>
